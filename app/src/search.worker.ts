@@ -73,10 +73,13 @@ self.onmessage = async (e: MessageEvent<Request>) => {
   if (!q) {
     ids = idx.ids.slice(0, limit); // справочник уже отсортирован по популярности
   } else {
-    const hits = idx.ms.search(q, {
-      boostDocument: (id) => 1 + Math.log10(idx.counts.get(id as number) ?? 1) * 0.2,
-    });
-    ids = hits.slice(0, limit).map((h) => h.id as number);
+    // как и на стартовом экране, порядок — по числу товаров; при равенстве остаётся релевантность
+    const count = (id: number) => idx.counts.get(id) ?? 0;
+    ids = idx.ms
+      .search(q)
+      .map((h) => h.id as number)
+      .sort((a, b) => count(b) - count(a))
+      .slice(0, limit);
   }
   self.postMessage({ reqId, ids });
 };
