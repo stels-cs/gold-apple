@@ -1,0 +1,6 @@
+/target
+backups
+app/dist
+app/node_modules
+.claude
+data
