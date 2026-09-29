@@ -38,18 +38,18 @@ export const ValueChip = memo(function ValueChip({ text, active, onAdd, allowAny
       >
         <IconPlus size={12} />
       </ActionIcon>
-      {allowAny && (
-        <ActionIcon
-          size="xs"
-          variant={active === 'any' ? 'filled' : 'subtle'}
-          color="blue"
-          title="Любой из"
-          aria-label="Добавить в фильтр «любой из»"
-          onClick={() => onAdd('any')}
-        >
-          <IconChevronsRight size={12} />
-        </ActionIcon>
-      )}
+      {/*{allowAny && (*/}
+      {/*  <ActionIcon*/}
+      {/*    size="xs"*/}
+      {/*    variant={active === 'any' ? 'filled' : 'subtle'}*/}
+      {/*    color="blue"*/}
+      {/*    title="Любой из"*/}
+      {/*    aria-label="Добавить в фильтр «любой из»"*/}
+      {/*    onClick={() => onAdd('any')}*/}
+      {/*  >*/}
+      {/*    <IconChevronsRight size={12} />*/}
+      {/*  </ActionIcon>*/}
+      {/*)}*/}
       <ActionIcon
         size="xs"
         variant={active === 'ex' ? 'filled' : 'subtle'}
