@@ -28,7 +28,7 @@ interface Props {
 
 export function FilterPanel({ catalog, filters, onAdd, onRemove, onClear }: Props) {
   const search = useSearch();
-  const [field, setField] = useState<Field>('brand');
+  const [field, setField] = useState<Field>('ing');
   const [query, setQuery] = useState('');
   const [debounced] = useDebouncedValue(query, 150);
   const [found, setFound] = useState<number[]>([]);
@@ -184,7 +184,10 @@ function ActiveBadge({
       variant="light"
       color={mode === 'in' ? 'green' : mode === 'any' ? 'blue' : 'red'}
       tt="none"
-      styles={{ label: { whiteSpace: 'normal' } }}
+      styles={{
+        root: { height: 'auto', minHeight: 'var(--badge-height)', paddingBlock: 4 },
+        label: { whiteSpace: 'normal', overflow: 'visible', textOverflow: 'clip', textAlign: 'left' },
+      }}
       leftSection={
         mode === 'in' ? (
           <IconPlus size={12} />

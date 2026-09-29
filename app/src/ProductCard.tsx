@@ -23,7 +23,7 @@ export const ProductCard = memo(function ProductCard({ catalog: c, index: i, tex
 
   const brand = c.brand[i];
   const type = c.type[i];
-  const bcs = Array.from(c.bcVal.subarray(c.bcOff[i], c.bcOff[i + 1]));
+  const bcs = Array.from(c.bcVal.subarray(c.bcOff[i], c.bcOff[i + 1])).reverse();
   const allIngs = Array.from(c.ingVal.subarray(c.ingOff[i], c.ingOff[i + 1]));
   const ings = showAll ? allIngs : allIngs.slice(0, INGREDIENTS_COLLAPSED);
 
@@ -62,9 +62,9 @@ export const ProductCard = memo(function ProductCard({ catalog: c, index: i, tex
           </Text>
         </Group>
         <Stack gap={4} mt={4}>
+          {row('bc', 'Категории', bcs)}
           {row('brand', 'Бренд', brand ? [brand] : [])}
           {row('type', 'Тип', type ? [type] : [])}
-          {row('bc', 'Категории', bcs)}
           {row(
             'ing',
             'Состав',
